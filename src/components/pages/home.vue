@@ -16,10 +16,10 @@
             </div>
         </section>
 
-        <section class="container-fluid p-lg-0 categoryDirect">
-            <div class="row pt-3">
-                <div class="col-12 col-sm-6 col-lg-4 mt-4 mt-lg-0">
-                    <div class="singleCategoryDirect">
+        <section class="container-fluid p-0 categoryDirect">
+            <div class="row pt-4 mx-0">
+                <div class="col-12 col-sm-6 col-lg-4 mt-0 px-lg-0 singleCategoryDirect">
+                    <div>
                         <img src="https://preview.colorlib.com/theme/winter/img/feature_1.png" alt=""
                             @mouseover="categoryDirectHover = 'Men'" @mouseleave="categoryDirectHover=''"
                             :class="{'ing': categoryDirectHover === 'Men'}">
@@ -29,8 +29,8 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-12 col-sm-6 mt-4 mt-lg-0 col-lg-4">
-                    <div class="singleCategoryDirect">
+                <div class="col-12 col-sm-6 col-lg-4 mt-3 mt-sm-0 px-lg-0 singleCategoryDirect">
+                    <div>
                         <img src="https://preview.colorlib.com/theme/winter/img/feature_2.png" alt=""
                             @mouseover="categoryDirectHover = 'Women'" @mouseleave="categoryDirectHover=''"
                             :class="{'ing': categoryDirectHover === 'Women'}">
@@ -40,8 +40,8 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-12 col-sm-6 col-lg-4 mt-4 mt-lg-0">
-                    <div class="singleCategoryDirect">
+                <div class="col-12 col-sm-6 col-lg-4 mt-3 mt-lg-0 px-lg-0 singleCategoryDirect">
+                    <div>
                         <img src="https://preview.colorlib.com/theme/winter/img/feature_3.png" alt=""
                             @mouseover="categoryDirectHover = 'Shoes'" @mouseleave="categoryDirectHover=''"
                             :class="{'ing': categoryDirectHover === 'Shoes'}">
@@ -58,39 +58,43 @@
             <div class="container-fluid">
                 <div class="row">
 
-                    <div class="col-12">
-                        <h3>New Arrival</h3>
+                    <div class="col-12 mx-auto newArrivalTopSection">
+                        <div class="row">
+                            <div class="col-12 col-lg-8 mx-auto">
+                                <h3>New Arrival</h3>
+                            </div>
+                            <!-- tab -->
+                            <div class="col-12 col-lg-4 mx-auto">
+                                <ul class="list-unstyled tab">
+                                    <li>
+                                        <a href="#" @click.prevent="newArrivalCategoryTab = 'all'"
+                                            :class="{'ing':newArrivalCategoryTab === 'all'}">全部</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" @click.prevent="newArrivalCategoryTab = 'rawMen'"
+                                            :class="{'ing':newArrivalCategoryTab === 'rawMen'}">男士</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" @click.prevent="newArrivalCategoryTab = 'rawWomen'"
+                                            :class="{'ing':newArrivalCategoryTab === 'rawWomen'}">女士</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" @click.prevent="newArrivalCategoryTab = 'rawShoes'"
+                                            :class="{'ing':newArrivalCategoryTab === 'rawShoes'}">鞋類</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" @click.prevent="newArrivalCategoryTab = 'rawSports'"
+                                            :class="{'ing':newArrivalCategoryTab === 'rawSports'}">運動</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="col-12">
-                        <!-- tab -->
-                        <ul class="list-unstyled tab">
-                            <li>
-                                <a href="#" @click.prevent="newArrivalCategoryTab = 'all'"
-                                    :class="{'ing':newArrivalCategoryTab === 'all'}">全部</a>
-                            </li>
-                            <li>
-                                <a href="#" @click.prevent="newArrivalCategoryTab = 'rawMen'"
-                                    :class="{'ing':newArrivalCategoryTab === 'rawMen'}">男士</a>
-                            </li>
-                            <li>
-                                <a href="#" @click.prevent="newArrivalCategoryTab = 'rawWomen'"
-                                    :class="{'ing':newArrivalCategoryTab === 'rawWomen'}">女士</a>
-                            </li>
-                            <li>
-                                <a href="#" @click.prevent="newArrivalCategoryTab = 'rawShoes'"
-                                    :class="{'ing':newArrivalCategoryTab === 'rawShoes'}">鞋類</a>
-                            </li>
-                            <li>
-                                <a href="#" @click.prevent="newArrivalCategoryTab = 'rawSports'"
-                                    :class="{'ing':newArrivalCategoryTab === 'rawSports'}">運動</a>
-                            </li>
-                        </ul>
-                    </div>
 
                     <!-- newArrivalProductHover -->
-                    <div class="col-12 p-xl-0 newArrivalProducts">
-                        <div class="row">
+                    <div class="col-12 p-lg-0 newArrivalProducts">
+                        <div class="row mx-0">
                             <div v-for="item in newArrivalCategoryArr[newArrivalCategoryTab]"
                                 class="col-12 col-sm-4 singleNewArrivalProduct"
                                 @mouseover="newArrivalProductHover = item.id" @mouseleave="newArrivalProductHover=''">
@@ -180,8 +184,6 @@
 
     /* 商城分類直達 */
     .categoryDirect {
-        display: flex;
-        /* display: flex; 僅作用於下一層 */
         justify-content: space-between;
         position: relative;
     }
@@ -190,13 +192,30 @@
         background-color: #f4f4f4;
     }
 
+    .categoryDirect>.row {
+        align-items: stretch;
+    }
+
     .categoryDirect img {
         max-width: 100%;
         transition: 0.5s;
     }
 
-    .singleCategoryDirect {
+    .singleCategoryDirect>div {
         overflow: hidden;
+    }
+
+    .singleCategoryDirect:first-of-type {
+        border-right: 10px solid #f4f4f4;
+    }
+
+    .singleCategoryDirect:nth-of-type(2) {
+        border-right: 5px solid #f4f4f4;
+        border-left: 5px solid #f4f4f4;
+    }
+
+    .singleCategoryDirect:last-of-type {
+        border-left: 10px solid #f4f4f4;
     }
 
     .singleCategoryDirect img.ing {
@@ -215,23 +234,65 @@
         white-space: nowrap;
     }
 
+    @media (max-width: 992px) {
+
+        .singleCategoryDirect:first-of-type {
+            border-right: 0px;
+        }
+
+        .singleCategoryDirect:nth-of-type(2) {
+            border-right: 0px;
+            border-left: 0px;
+        }
+
+        .singleCategoryDirect:last-of-type {
+            border-left: 0px;
+        }
+    }
+
+
     /* New Arrival */
     .newArrival {
         background-color: #f4f4f4;
     }
 
-    .newArrival .row {
-        padding: 70px 0;
+    .newArrival>.container-fluid>.row {
+        padding-top: 70px;
+        padding-bottom: 70px;
     }
 
-    .newArrival h3 {
+    .newArrivalTopSection {
+        max-width: 960px;
+    }
+
+    .newArrivalTopSection h3 {
         font-size: 30px;
         font-weight: 700;
         color: #1a1a1a;
         margin-bottom: 30px;
     }
 
-    .newArrival .tab {
+    .newArrivalTopSection>.row {
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    @media(min-width:576px) {
+        .newArrivalTopSection .col-12 {
+            max-width: 720px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
+
+    @media(min-width:992px) {
+        .newArrivalTopSection h3 {
+            font-size: 50px;
+        }
+    }
+
+
+    .tab {
         margin-bottom: 30px;
     }
 
@@ -243,7 +304,7 @@
         font-size: 16px;
         text-decoration: none;
         color: #000;
-        margin-right: 30px;
+        margin-right: 20px;
         padding-bottom: 2px;
     }
 
@@ -388,6 +449,7 @@
     }
 
     @media(min-width: 768px) {
+
         .banner {
             background-image: url("https://preview.colorlib.com/theme/winter/img/banner_img.png");
             background-position: 50% 50%;
@@ -414,6 +476,7 @@
     }
 
     @media (min-width: 992px) {
+
         .productInfo h4:nth-of-type(2) {
             margin: 18px 0 26px 0;
         }
